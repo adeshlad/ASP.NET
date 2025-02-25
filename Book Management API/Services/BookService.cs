@@ -28,9 +28,9 @@ namespace Book_Management_API.Services
             return _dbContext.Books.Select(book => new BookResponse(book)).ToList();
         }
 
-        public BookResponse GetBookById(Guid id)
+        public BookResponse? GetBookById(Guid id)
         {
-            Book book = _dbContext.Books.FirstOrDefault(book => book.Id == id);
+            Book? book = _dbContext.Books.FirstOrDefault(book => book.Id == id);
             
             if (book == null)
             {
@@ -59,6 +59,38 @@ namespace Book_Management_API.Services
             List<BookResponse> books = _dbContext.Books.Where(book => book.Year == year).Select(book => new BookResponse(book)).ToList();
 
             return books;
+        }
+
+        public BookResponse? UpdateBookById(Guid id, BookUpdateRequest request)
+        {
+            Book? book = _dbContext.Books.FirstOrDefault(book => book.Id == id);
+
+            if (book == null)
+            {
+                return null;
+            }
+
+            book.Title = request.Title ?? book.Title;
+            book.Author = request.Author ?? book.Author;
+            book.Year = request.Year != 0 ? request.Year : book.Year;
+
+            _dbContext.SaveChanges();
+
+            return new BookResponse(book);
+        }
+
+        public bool DeleteBookById(Guid id)
+        {
+            Book? book = _dbContext.Books.FirstOrDefault(book => book.Id == id);
+
+            if (book == null)
+            {
+                return false;
+            }
+
+            _dbContext.Books.Remove(book);
+            _dbContext.SaveChanges();
+            return true;
         }
     }
 }

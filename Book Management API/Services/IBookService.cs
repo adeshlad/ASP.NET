@@ -4,16 +4,20 @@ namespace Book_Management_API.Services
 {
     public interface IBookService
     {
-        BookResponse AddBook(BookAddRequest request);
+        public BookResponse AddBook(BookAddRequest request);
 
-        List<BookResponse> GetAllBooks();
+        public List<BookResponse> GetAllBooks();
         
-        BookResponse GetBookById(Guid id);
+        public BookResponse? GetBookById(Guid id);
 
-        List<BookResponse> GetBooksByTitle(string title);
+        public List<BookResponse> GetBooksByTitle(string title);
 
-        List<BookResponse> GetBooksByAuthor(string author);
+        public List<BookResponse> GetBooksByAuthor(string author);
 
-        List<BookResponse> GetBooksByYear(int year);
+        public List<BookResponse> GetBooksByYear(int year);
+
+        public BookResponse? UpdateBookById(Guid id, BookUpdateRequest request);
+
+        public bool DeleteBookById(Guid id);
     }
 }

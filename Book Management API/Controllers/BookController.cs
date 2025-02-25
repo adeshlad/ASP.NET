@@ -35,7 +35,7 @@ namespace Book_Management_API.Controllers
         [HttpGet("id/{id:guid}")]
         public IActionResult GetBookById(Guid id)
         {
-            BookResponse response = _bookService.GetBookById(id);
+            BookResponse? response = _bookService.GetBookById(id);
 
             return Ok(response);
         }
@@ -62,6 +62,22 @@ namespace Book_Management_API.Controllers
             List<BookResponse> responses = _bookService.GetBooksByYear(year);
 
             return Ok(responses);
+        }
+
+        [HttpPut("id/{id:guid}")]
+        public IActionResult UpdateBookById(Guid id, [FromForm]BookUpdateRequest request)
+        {
+            BookResponse? response = _bookService.UpdateBookById(id, request);
+
+            return Ok(response);
+        }
+
+        [HttpDelete("id/{id:guid}")]
+        public IActionResult DeleteBookById(Guid id)
+        {
+            bool status = _bookService.DeleteBookById(id);
+
+            return Ok(status);
         }
     }
 }
