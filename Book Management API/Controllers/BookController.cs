@@ -17,10 +17,10 @@ namespace Book_Management_API.Controllers
         }
 
         [HttpPost("")]
-        public IActionResult AddBook([FromForm]BookAddRequest request)
+        public IActionResult AddBook([FromForm] BookAddRequest request)
         {
             BookResponse response = _bookService.AddBook(request);
-            
+
             return Ok(response);
         }
 
@@ -29,7 +29,7 @@ namespace Book_Management_API.Controllers
         {
             List<BookResponse> responses = _bookService.GetAllBooks();
 
-            return Ok(responses);
+            return Ok(new { books = responses });
         }
 
         [HttpGet("id/{id:guid}")]
@@ -45,15 +45,15 @@ namespace Book_Management_API.Controllers
         {
             List<BookResponse> responses = _bookService.GetBooksByTitle(title);
 
-            return Ok(responses);
+            return Ok(new { books = responses });
         }
 
-        [HttpGet("author/{author:alpha}")]
+        [HttpGet("author/{author}")]
         public IActionResult GetBooksByAuthor(string author)
         {
             List<BookResponse> responses = _bookService.GetBooksByAuthor(author);
 
-            return Ok(responses);
+            return Ok(new { books = responses });
         }
 
         [HttpGet("year/{year:int}")]
@@ -61,11 +61,11 @@ namespace Book_Management_API.Controllers
         {
             List<BookResponse> responses = _bookService.GetBooksByYear(year);
 
-            return Ok(responses);
+            return Ok(new { books = responses });
         }
 
         [HttpPut("id/{id:guid}")]
-        public IActionResult UpdateBookById(Guid id, [FromForm]BookUpdateRequest request)
+        public IActionResult UpdateBookById(Guid id, [FromForm] BookUpdateRequest request)
         {
             BookResponse? response = _bookService.UpdateBookById(id, request);
 
@@ -77,7 +77,7 @@ namespace Book_Management_API.Controllers
         {
             bool status = _bookService.DeleteBookById(id);
 
-            return Ok(status);
+            return status ? NoContent() : NotFound();
         }
     }
 }

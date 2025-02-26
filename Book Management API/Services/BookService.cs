@@ -22,7 +22,7 @@ namespace Book_Management_API.Services
 
             return new BookResponse(book);
         }
-        
+
         public List<BookResponse> GetAllBooks()
         {
             return _dbContext.Books.Select(book => new BookResponse(book)).ToList();
@@ -31,7 +31,7 @@ namespace Book_Management_API.Services
         public BookResponse? GetBookById(Guid id)
         {
             Book? book = _dbContext.Books.FirstOrDefault(book => book.Id == id);
-            
+
             if (book == null)
             {
                 return null;

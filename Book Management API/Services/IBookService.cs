@@ -7,7 +7,7 @@ namespace Book_Management_API.Services
         public BookResponse AddBook(BookAddRequest request);
 
         public List<BookResponse> GetAllBooks();
-        
+
         public BookResponse? GetBookById(Guid id);
 
         public List<BookResponse> GetBooksByTitle(string title);
