@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Book_Management_API.Models
+namespace BookManagement.Domain.Entities
 {
     public class Book
     {
@@ -9,11 +9,11 @@ namespace Book_Management_API.Models
 
         [Required]
         [StringLength(255)]
-        public string? Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [Required]
         [StringLength(255)]
-        public string? Author { get; set; }
+        public string Author { get; set; } = string.Empty;
 
         [Required]
         [Range(1500, 2100)]

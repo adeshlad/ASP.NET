@@ -1,8 +1,7 @@
-﻿using Book_Management_API.Models;
+﻿using BookManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
-namespace Book_Management_API.Data
+namespace BookManagement.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {
