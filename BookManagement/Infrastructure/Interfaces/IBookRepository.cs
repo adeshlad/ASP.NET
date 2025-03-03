@@ -10,7 +10,7 @@ namespace BookManagement.Infrastructure.Interfaces
 
         Task<Book?> GetByIdAsync(Guid id);
 
-        Task<IEnumerable<Book>> GetByParamsAsync(string? title, string? author, int? year);
+        Task<IEnumerable<Book>> GetByAttributesAsync(string? title, string? author, int? year);
 
         Task<Book?> UpdateAsync(Guid id, string title, string author, int year);
 

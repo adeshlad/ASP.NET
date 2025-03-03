@@ -16,7 +16,7 @@ namespace BookManagement.API.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> AddBook([FromForm] BookAddRequest request)
+        public async Task<IActionResult> AddBook(BookAddRequest request)
         {
             BookResponse response = await _bookService.AddBook(request);
 
@@ -24,11 +24,20 @@ namespace BookManagement.API.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetAllBooks()
+        public async Task<IActionResult> GetBooks([FromQuery] string? title, [FromQuery] string? author, [FromQuery] int? year)
         {
-            IEnumerable<BookResponse> responses = await _bookService.GetAllBooks();
+            IEnumerable<BookResponse> responses = null;
 
-            return Ok(new { books = responses });
+			if (string.IsNullOrEmpty(title) && string.IsNullOrEmpty(author) && !year.HasValue)
+            {
+				responses = await _bookService.GetAllBooks();
+            }
+            else
+            {
+				responses = await _bookService.GetBooksByAttributes(title, author, year);
+			}
+
+			return Ok(new { books = responses });
         }
 
         [HttpGet("id/{id:guid}")]
@@ -37,14 +46,6 @@ namespace BookManagement.API.Controllers
             BookResponse? response = await _bookService.GetBookById(id);
 
             return Ok(response);
-        }
-
-        [HttpGet("search")]
-        public async Task<IActionResult> GetBooksByParams([FromQuery] string? title, [FromQuery] string? author, [FromQuery] int? year)
-        {
-            IEnumerable<BookResponse> responses = await _bookService.GetBooksByParams(title, author, year);
-
-            return Ok(new { books = responses });
         }
 
         [HttpPut("id/{id:guid}")]

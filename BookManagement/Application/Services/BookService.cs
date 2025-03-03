@@ -41,9 +41,9 @@ namespace BookManagement.Application.Services
             return new BookResponse(book);
         }
 
-        public async Task<IEnumerable<BookResponse>> GetBooksByParams(string? title, string? author, int? year)
+        public async Task<IEnumerable<BookResponse>> GetBooksByAttributes(string? title, string? author, int? year)
         {
-            IEnumerable<Book> books = await _bookRespository.GetByParamsAsync(title, author, year);
+            IEnumerable<Book> books = await _bookRespository.GetByAttributesAsync(title, author, year);
 
             return books.Select(book => new BookResponse(book)).ToList();
         }

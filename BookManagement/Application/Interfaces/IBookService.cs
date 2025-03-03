@@ -10,7 +10,7 @@ namespace BookManagement.Application.Interfaces
 
         Task<BookResponse?> GetBookById(Guid id);
 
-        Task<IEnumerable<BookResponse>> GetBooksByParams(string? title, string? author, int? year);
+        Task<IEnumerable<BookResponse>> GetBooksByAttributes(string? title, string? author, int? year);
 
         Task<BookResponse?> UpdateBook(Guid id, BookUpdateRequest request);
 

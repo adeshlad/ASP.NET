@@ -32,7 +32,7 @@ namespace BookManagement.Infrastructure.Repositories
             return await _dbContext.Books.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Book>> GetByParamsAsync(string? title, string? author, int? year)
+        public async Task<IEnumerable<Book>> GetByAttributesAsync(string? title, string? author, int? year)
         {
             IQueryable<Book> books = _dbContext.Books;
 
