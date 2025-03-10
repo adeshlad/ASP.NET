@@ -9,12 +9,9 @@ using BookManagement.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
-});
+builder.Services.AddSingleton<CosmosDbContext>();
 
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookRepository, CosmosBookRepository>();
 
 builder.Services.AddScoped<IBookService, BookService>();
 
