@@ -1,9 +1,7 @@
-using BookManagement.Application.Interfaces;
-using BookManagement.Application.Services;
-using BookManagement.Infrastructure.Data;
-using BookManagement.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using BookManagement.Infrastructure.Repositories;
+using BookManagement.Data;
+using BookManagement.Book.Repositories;
+using BookManagement.Book.Services;
 
 // Controller->Service->Repository->DbContext->Database
 

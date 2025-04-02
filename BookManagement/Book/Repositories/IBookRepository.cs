@@ -1,6 +1,4 @@
-﻿using BookManagement.Domain.Entities;
-
-namespace BookManagement.Infrastructure.Interfaces
+﻿namespace BookManagement.Book.Repositories
 {
     public interface IBookRepository
     {

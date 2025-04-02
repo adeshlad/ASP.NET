@@ -1,9 +1,7 @@
-﻿using BookManagement.Domain.Entities;
-using BookManagement.Infrastructure.Data;
-using BookManagement.Infrastructure.Interfaces;
+﻿using BookManagement.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookManagement.Infrastructure.Repositories
+namespace BookManagement.Book.Repositories
 {
     public class BookRepository : IBookRepository
     {

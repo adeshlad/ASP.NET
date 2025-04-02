@@ -1,9 +1,7 @@
-﻿using BookManagement.Application.DTOs;
-using BookManagement.Application.Interfaces;
-using BookManagement.Domain.Entities;
-using BookManagement.Infrastructure.Interfaces;
+﻿using BookManagement.Book.DTOs;
+using BookManagement.Book.Repositories;
 
-namespace BookManagement.Application.Services
+namespace BookManagement.Book.Services
 {
     public class BookService : IBookService
     {

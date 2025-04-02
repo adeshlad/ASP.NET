@@ -1,6 +1,6 @@
-﻿using BookManagement.Application.DTOs;
+﻿using BookManagement.Book.DTOs;
 
-namespace BookManagement.Application.Interfaces
+namespace BookManagement.Book.Services
 {
     public interface IBookService
     {

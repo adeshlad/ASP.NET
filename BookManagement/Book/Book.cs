@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookManagement.Domain.Entities
+namespace BookManagement.Book
 {
     public class Book
     {

@@ -1,8 +1,8 @@
-﻿using BookManagement.Application.DTOs;
-using BookManagement.Application.Interfaces;
+﻿using BookManagement.Book.DTOs;
+using BookManagement.Book.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookManagement.API.Controllers
+namespace BookManagement.Book
 {
     [Route("api/books")]
     [ApiController]
@@ -40,7 +40,7 @@ namespace BookManagement.API.Controllers
 			return Ok(new { books = responses });
         }
 
-        [HttpGet("id/{id:guid}")]
+        [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetBookById(Guid id)
         {
             BookResponse? response = await _bookService.GetBookById(id);
@@ -48,7 +48,7 @@ namespace BookManagement.API.Controllers
             return Ok(response);
         }
 
-        [HttpPut("id/{id:guid}")]
+        [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateBook(Guid id, [FromForm] BookUpdateRequest request)
         {
             BookResponse? response = await _bookService.UpdateBook(id, request);
@@ -56,7 +56,7 @@ namespace BookManagement.API.Controllers
             return Ok(response);
         }
 
-        [HttpDelete("id/{id:guid}")]
+        [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteBook(Guid id)
         {
             bool response = await _bookService.DeleteBook(id);

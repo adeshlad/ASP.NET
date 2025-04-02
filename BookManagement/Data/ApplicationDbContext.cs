@@ -1,7 +1,6 @@
-﻿using BookManagement.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace BookManagement.Infrastructure.Data
+namespace BookManagement.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -9,6 +8,6 @@ namespace BookManagement.Infrastructure.Data
         {
         }
 
-        public DbSet<Book> Books { get; set; }
+        public DbSet<Book.Book> Books { get; set; }
     }
 }

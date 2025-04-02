@@ -1,6 +1,4 @@
-﻿using BookManagement.Domain.Entities;
-
-namespace BookManagement.Application.DTOs
+﻿namespace BookManagement.Book.DTOs
 {
     public class BookAddRequest
     {
